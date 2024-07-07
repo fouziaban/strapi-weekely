@@ -6,7 +6,7 @@ variable "private_key_path" {
 
 # Security Group
 resource "aws_security_group" "strapi_sg" {
-  name        = "ashok-security-group"
+  name        = "banu-security-group"
   description = "Security group for Strapi EC2 instance"
 
   ingress {
@@ -56,7 +56,7 @@ resource "aws_instance" "strapi" {
   vpc_security_group_ids = [aws_security_group.strapi_sg.id]
 
   tags = {
-    Name = "StrapiServer"
+    Name = "strapi-weekly-fb"
   }
 
   provisioner "remote-exec" {
@@ -65,7 +65,7 @@ resource "aws_instance" "strapi" {
     "sudo apt-get install -y docker.io",
     "sudo systemctl start docker",
     "sudo systemctl enable docker",
-    "sudo docker run -d -p 80:80 -p 1337:1337 veera1016/strapi:1.0.0",
+    "sudo docker run -d -p 80:80 -p 1337:1337 shaikfouziabanu/strapidocker:latest",
   ]
     connection {
       type        = "ssh"
