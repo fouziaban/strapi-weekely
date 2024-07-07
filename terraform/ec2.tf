@@ -6,7 +6,7 @@ variable "private_key_path" {
 
 # Security Group
 resource "aws_security_group" "strapi_sg" {
-  name        = "banu-security-group"
+  name        = "banu-weekely-security-group"
   description = "Security group for Strapi EC2 instance"
 
   ingress {
@@ -65,7 +65,7 @@ resource "aws_instance" "strapi" {
     "sudo apt-get install -y docker.io",
     "sudo systemctl start docker",
     "sudo systemctl enable docker",
-    "sudo docker run -d -p 80:80 -p 1337:1337 shaikfouziabanu/strapidocker:latest",
+    "sudo docker run -d -p 80:80 -p 1337:1337 shaikfouziabanu/strapidocker:1.0.0",
   ]
     connection {
       type        = "ssh"
