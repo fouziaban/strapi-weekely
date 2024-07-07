@@ -21,8 +21,8 @@ jobs:
       - name: Create SSH Key File
         run: |
           mkdir -p /home/runner/.ssh
-          echo "${{ secrets.BANU_EC2_KEY }}" > /home/runner/.ssh/STRAPI2-FB.pem
-          chmod 600 /home/runner/.ssh/STRAPI2-FB.pem
+          echo "${{ secrets.BANU_EC2_KEY }}" > /home/runner/.ssh/STRAPI-WEEKELY.pem
+          chmod 600 /home/runner/.ssh/STRAPI-WEEKELY.pem
           ls -al /home/runner/.ssh  # Verify permissions and existence
           
       - name: Configure AWS Credentials
@@ -37,5 +37,5 @@ jobs:
         working-directory: ./terraform  # Update this path if necessary
 
       - name: Apply Terraform
-        run: terraform apply -auto-approve -var="private_key_path=/home/runner/.ssh/STRAPI2-FB.pem"
+        run: terraform apply -auto-approve -var="private_key_path=/home/runner/.ssh/STRAPI-WEEKELY.pem"
         working-directory: ./terraform  # Update this path if necessary
